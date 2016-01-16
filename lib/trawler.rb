@@ -48,7 +48,7 @@ module Trawler
   # +session+ optional string containing cookies to send
   # +headers+ optional boolean specifying whether you want the headers
   def self.request( method, path, query: nil, session: nil, headers: false)
-    INSTANCE.request( method, path, query, session, headers )
+    INSTANCE.request( method, path, query: query, session: session, headers: headers )
   end
 
   def self.version
