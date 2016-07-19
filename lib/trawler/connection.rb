@@ -113,15 +113,25 @@ class Connection
     end
   end
 
-  def request(method, path, query: nil, session: nil, headers: false)
+  def request(method, path, query: nil, session: nil, headers: false, user_click: false)
     require_open
     @res = nil
 
     method = Trawler::Request::Method.fetch(method.upcase)
 
+    if user_click == true
+        user_click = Time.new()
+    elsif user_click.is_a? Numeric
+        user_click = Time.at(user_click)
+    end
+
     req = Trawler::Request.new( :id => @req_id, :method => method, \
                                 :path => path, :query => query, \
                                 :session => session, :headers => headers )
+
+    if user_click
+        req.user_click = Trawler::Timestamp.new( :seconds => user_click.to_i, :nanos => user_click.nsec )
+    end
 
     @tsock.send_string(req.encode)
 

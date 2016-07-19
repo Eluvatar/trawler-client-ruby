@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name = 'trawler-client'
-  s.version = '0.1.1'
-  s.date = '2015-10-13'
+  s.version = '0.1.2'
+  s.date = '2016-04-01'
   s.summary = 'ruby Trawler client library'
   s.description = 'a system for sharing rate-limited access to NationStates.net'
   s.authors = ['Eluvatar']
